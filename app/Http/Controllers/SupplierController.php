@@ -103,7 +103,7 @@ class SupplierController extends Controller
         return redirect()->back();
     }
 
-    // permanet restore
+    // permanet delete
     public function permanentDelete(string $id)
     {
         $suppliers = Supplier::onlyTrashed()->findOrFail($id);

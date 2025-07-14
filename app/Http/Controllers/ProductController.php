@@ -35,15 +35,16 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
+
         $product = new Product();
         $product->name = $request->name;
         $product->description = $request->description;
         $product->sku = $request->sku;
-        $product->supplier = $request->supplier;
+        $product->supplier_id = $request->supplier;
         $product->price = $request->price;
         $product->save();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('products.index');
     }
 
     /**
@@ -59,7 +60,9 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $suppliers = Supplier::all();
+        return view('products.edit', compact('product', 'suppliers'));
     }
 
     /**
@@ -67,7 +70,15 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->name = $request->name;
+        $product->description = $request->description;
+        $product->sku = $request->sku;
+        $product->supplier_id = $request->supplier;
+        $product->price = $request->price;
+        $product->save();
+
+        return redirect()->route('products.index');
     }
 
     /**
@@ -75,6 +86,36 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return redirect()->route('products.index');
+    }
+
+     // trash
+    public function trashindex()
+    {
+        $getSuppliers = Supplier::all();
+        $products = Product::onlyTrashed()->get();
+
+        return view('products.trash', compact('products'));
+    }
+
+    // restore
+    public function restore(string $id)
+    {
+        $products = Product::onlyTrashed()->findOrFail($id);
+
+        $products->restore();
+        return redirect()->back();
+    }
+
+    // permanet delete
+    public function permanentDelete(string $id)
+    {
+        $products = Product::onlyTrashed()->findOrFail($id);
+
+        $products->forceDelete();
+        return redirect()->back();
     }
 }

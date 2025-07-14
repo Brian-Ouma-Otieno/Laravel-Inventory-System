@@ -27,6 +27,11 @@ Route::get('/dashboard', function () {
 //     return view('products.index');
 // })->name('products.index');
 
+// product trash
+Route::get('products/trash', [ProductController::class, 'trashindex'])->name('products.trash');
+Route::get('products/restore/{product}', [ProductController::class, 'restore'])->name('products.restore');
+Route::delete('products/trash/{product}', [ProductController::class, 'permanentDelete'])->name('products.permanent.delete');
+
 // supplier trash
 Route::get('suppliers/trash', [SupplierController::class, 'trashindex'])->name('suppliers.trash');
 Route::get('suppliers/restore/{supplier}', [SupplierController::class, 'restore'])->name('suppliers.restore');

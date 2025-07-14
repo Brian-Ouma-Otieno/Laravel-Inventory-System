@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>Trash Data</h2>
+<h2>Trashed Data</h2>
 <a href="{{ route('suppliers.index') }}" class="btn btn-primary mb-3">Back</a>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-sm">
     <thead>
         <tr>
             <th>Name</th>
