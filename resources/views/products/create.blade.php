@@ -41,16 +41,16 @@
                     </td>
 
                     <td>
-                        <select name="supplier_id" id="" selected>
-                            <option value="">Select Supplier</option>
+                        <select name="supplier" id="" selected>
+                            <option value="" selected disabled>-- Select a Supplier --</option>
                             @foreach ($suppliers as $supplier)
-                                <option value="{{ $supplier->id  }}">{{ $supplier->name }}</option>
+                                <option name='supplier' {{ old('supplier') == 'selected'}} value="{{ $supplier->id  }}">{{ $supplier->name }}</option>
+                                {{-- <option name='supplier' {{ old('supplier_id', $product->supplier_id ?? '') == $supplier->id ? 'selected' : '' }} value="{{ $supplier->id  }}">{{ $supplier->name }}</option> --}}
                             @endforeach
                         </select>
-                        {{-- <input type="text" name="supplier" id="" value="{{ old('supplier') }}">
                         @error('supplier')
                             <div class="alert alert-danger"> {{ $message }}  </div>
-                        @enderror --}}
+                        @enderror
                     </td>
 
                     <td>

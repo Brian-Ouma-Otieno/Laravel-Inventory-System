@@ -1,42 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@extends('forms.form-head')
+
+@section('form.content')
+
     <title>SignUp</title>
 </head>
+
 <body>
-    <form action="{{ route('form.signup') }}" method="post">
-        @csrf
-        {{-- @if ($errors->any())
-            @foreach ($errors->all() as $error)
-                {{ $error }}
-            @endforeach
-        @endif --}}
-        <div class="">
-            <input type="text" name="username" id="" placeholder="Username" value="{{ old('username') }}"><br>
-            @error('username')
-                {{ $message }}
-            @enderror
-        </div>
-        <div class="">
-            <input type="text" name="email" id="" placeholder="Email" value="{{ old('email') }}"><br>
-            @error('email')
-                {{ $message }}
-            @enderror
-        </div>
-        <div class="">
-            <input type="password" name="password" id="" placeholder="Password"><br>
-            @error('password')
-                {{ $message }}
-            @enderror
-        </div>
-        <div class="">
-            <input type="password" name="password_confirmation" id="" placeholder="Confirm Password">
-        </div>
-        <button type="submit">SignUp</button> <br>
-        <p>if a/c exist login insted: <a href="{{ route('login') }}">Login</a></p>
-    </form>
-</body>
-</html>
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <form class="border p-4 rounded bg-light w-25" action="{{ route('form.signup') }}" method="post">
+            @csrf
+            <h2 class="mb-3 text-center">SignUp</h2>
+
+                <div class="">
+                    <input class="form-control" type="text" name="username" id="" placeholder="Username" value="{{ old('username') }}"><br>
+                    @error('username')
+                        <div class="text-danger"> {{  $message }} </div>
+                    @enderror
+                </div>
+                <div class="">
+                    <input class="form-control" type="text" name="email" id="" placeholder="Email" value="{{ old('email') }}"><br>
+                    @error('email')
+                        <div class="text-danger"> {{  $message }} </div>
+                    @enderror
+                </div>
+                <div class="">
+                    <input class="form-control" type="password" name="password" id="" placeholder="Password"><br>
+                    @error('password')
+                        <div class="text-danger"> {{  $message }} </div>
+                    @enderror
+                </div>
+                <div class="">
+                    <input class="form-control" type="password" name="password_confirmation" id="" placeholder="Confirm Password">
+                </div>
+
+            <button class="btn btn-success w-100" type="submit">SignUp</button> <br>
+            <p class="mt-2 text-primary">Login insted: <a href="{{ route('login') }}">Login</a></p>
+        </form>
+    </div>
+
+@endsection

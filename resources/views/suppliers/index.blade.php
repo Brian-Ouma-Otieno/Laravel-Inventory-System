@@ -5,7 +5,7 @@
 <a href="{{ route('suppliers.create') }}" class="btn btn-primary mb-3">Add Supplier</a>
 <a href="{{ route('suppliers.trash') }}" class="btn btn-primary mb-3">Trash</a>
 
-<table class="table table-bordered">
+<table class="table table-bordered table-sm">
     <thead>
         <tr>
             <th>Name</th>
