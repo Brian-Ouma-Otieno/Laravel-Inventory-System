@@ -35,7 +35,7 @@
                     </td>
 
                     <td>
-                    <input type="text" name="sku" id="" value="{{ $product->sku }}">
+                    <input type="text" name="sku" id="" value="{{ $product->sku }}" readonly>
                         @error('sku')
                             <div class="alert alert-danger"> {{ $message }}  </div>
                         @enderror
@@ -61,9 +61,7 @@
                     </td>
 
                     <td>
-                        {{-- <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-warning">Edit</a> --}}
                         <button type="submit" class="btn btn-sm btn-primary">Update</button>
-
                     </td>
                 </tr>
             </tbody>

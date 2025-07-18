@@ -34,7 +34,8 @@
                     </td>
 
                     <td>
-                    <input type="text" name="sku" id="" value="{{ old('sku') }}">
+                    <input type="text" name="sku" id="" value="{{ $sku }}" readonly>
+                    
                         @error('sku')
                             <div class="alert alert-danger"> {{ $message }}  </div>
                         @enderror
@@ -45,7 +46,6 @@
                             <option value="" selected disabled>-- Select a Supplier --</option>
                             @foreach ($suppliers as $supplier)
                                 <option name='supplier' {{ old('supplier') == 'selected'}} value="{{ $supplier->id  }}">{{ $supplier->name }}</option>
-                                {{-- <option name='supplier' {{ old('supplier_id', $product->supplier_id ?? '') == $supplier->id ? 'selected' : '' }} value="{{ $supplier->id  }}">{{ $supplier->name }}</option> --}}
                             @endforeach
                         </select>
                         @error('supplier')

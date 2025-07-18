@@ -13,8 +13,8 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ route('products.index') }}">Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('suppliers.index') }}">Suppliers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('stock.history') }}">Stock</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('reports.index') }}">Reports</a></li>
+                    {{-- <li class="nav-item"><a class="nav-link" href="{{ route('stock.history') }}">Stock</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('reports.index') }}">Reports</a></li> --}}
                 </ul>
             </div>
         </div>

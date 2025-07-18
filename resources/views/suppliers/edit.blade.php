@@ -56,7 +56,6 @@
                     </td>
 
                     <td>
-                        {{-- <a href="{{ route('products.edit', $product) }}" class="btn btn-sm btn-warning">Edit</a> --}}
                         <button type="submit" class="btn btn-sm btn-primary">Update</button>
 
                     </td>

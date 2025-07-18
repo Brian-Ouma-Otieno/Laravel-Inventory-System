@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
@@ -18,14 +19,9 @@ Route::post('/login', [LoginController::class, 'login'])->name('form.login');
 // home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
-
-// Route::get('/products', function () {
-//     return view('products.index');
-// })->name('products.index');
 
 // product trash
 Route::get('products/trash', [ProductController::class, 'trashindex'])->name('products.trash');
@@ -41,10 +37,6 @@ Route::resource('products', ProductController::class);
 Route::resource('suppliers', SupplierController::class);
 
 
-// Route::get('/suppliers', function () {
-//     return view('suppliers.index');
-// })->name('suppliers.index');
-
 Route::get('/stock', function () {
     return view('stock.history');
 })->name('stock.history');
@@ -53,6 +45,4 @@ Route::get('/reports', function () {
     return view('reports.index');
 })->name('reports.index');
 
-// Route::get('/create', function () {
-//     return view('products.create');
-// })->name('products.create');
+
