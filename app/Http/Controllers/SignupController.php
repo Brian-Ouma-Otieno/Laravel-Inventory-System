@@ -20,7 +20,7 @@ class SignupController extends Controller
         $user->password = $request->password;
         $user->save();
 
-        return redirect()->intended('/home');
+        return redirect()->intended('/dashboard');
         // dd($request->all());
         // echo $request->_token;
     }
