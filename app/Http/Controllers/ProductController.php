@@ -6,6 +6,7 @@ use App\Http\Requests\ProductStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Supplier;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -26,8 +27,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $sku = Str::random(4) . '-' . time();
         $suppliers = Supplier::all();
-        return view('products.create', compact('suppliers'));
+        return view('products.create', compact('suppliers', 'sku'));
     }
 
     /**
