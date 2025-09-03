@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Supplier;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+
 
 class ProductController extends Controller
 {
@@ -15,8 +18,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // $products = Product::with('supplier_id)')->get();
-        $products = Product::all();
+        $products = Product::where('user_id', Auth::user()->id)->get();
         $getSuppliers = Supplier::all();
 
         return view('products.index', compact('products'));
@@ -39,6 +41,7 @@ class ProductController extends Controller
     {
 
         $product = new Product();
+        $product->user_id = Auth::user()->id;
         $product->name = $request->name;
         $product->description = $request->description;
         $product->sku = $request->sku;
@@ -64,6 +67,8 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
         $suppliers = Supplier::all();
+
+        Gate::authorize('update', $product);
         return view('products.edit', compact('product', 'suppliers'));
     }
 

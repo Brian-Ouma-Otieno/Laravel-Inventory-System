@@ -55,7 +55,11 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('reports.index') }}">Reports</a></li> --}}
                 </ul>
             </div>
-            <button type="button" class="btn btn-secondary btn-sm">Logout</button>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="btn btn-secondary btn-sm">Logout</button>
+            </form>
+
         </div>
     </nav>
 

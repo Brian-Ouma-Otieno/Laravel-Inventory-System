@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Models;
+use app\Models\Supplier;
+use app\Models\Product;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,4 +47,16 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function suppliers()
+    {
+        return $this->hasMany(Supplier::class);
+    }
+
 }

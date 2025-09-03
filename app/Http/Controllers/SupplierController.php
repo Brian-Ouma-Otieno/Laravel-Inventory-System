@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SupplierStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class SupplierController extends Controller
 {
@@ -13,7 +15,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = Supplier::all();
+        // $suppliers = Supplier::all();
+        $suppliers = Supplier::where('user_id', Auth::user()->id)->get();
 
         return view('suppliers.index', compact('suppliers'));
     }
@@ -32,6 +35,7 @@ class SupplierController extends Controller
     public function store(SupplierStoreRequest $request)
     {
         $supplier = new Supplier();
+        $supplier->user_id = Auth::user()->id;
         $supplier->name = $request->name;
         $supplier->contact_person = $request->contact_person;
         $supplier->phone = $request->phone;
@@ -56,6 +60,8 @@ class SupplierController extends Controller
     public function edit(string $id)
     {
         $supplier = Supplier::findOrFail($id);
+
+        Gate::authorize('update', $supplier);
         return view('suppliers.edit', compact('supplier'));
     }
 

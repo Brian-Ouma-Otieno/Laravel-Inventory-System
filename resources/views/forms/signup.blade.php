@@ -6,9 +6,12 @@
 </head>
 
 <body>
+
     <div class="d-flex justify-content-center align-items-center vh-100">
+
         <form class="border p-4 rounded bg-light w-25" action="{{ route('form.signup') }}" method="post">
             @csrf
+            <h5 class="text-center">SIMPLE INVENTORY MANAGEMENT SYSTEM</h5>
             <h2 class="mb-3 text-center">SignUp</h2>
 
                 <div class="">
