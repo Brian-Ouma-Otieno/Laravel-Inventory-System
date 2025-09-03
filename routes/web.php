@@ -1,6 +1,8 @@
 <?php
 
 // use App\Http\Controllers\ProfileController;
+
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignupController;
@@ -34,6 +36,9 @@ Route::post('/', [SignupController::class, 'signup'])->name('form.signup');
 // login
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('form.login');
+
+// logout
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
 
 
 // dashboard

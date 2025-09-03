@@ -9,6 +9,7 @@
     <div class="d-flex justify-content-center align-items-center vh-100">
         <form class="border p-4 rounded bg-light w-25" action="{{ route('form.login') }}" method="post">
             @csrf
+            <h5 class="text-center">SIMPLE INVENTORY MANAGEMENT SYSTEM</h5>
             <h2 class="mb-3 text-center">Login</h2>
             <div class="">
                 <input class="form-control" type="text" name="email" id="" placeholder="Email" value="{{ old('email') }}"><br>
