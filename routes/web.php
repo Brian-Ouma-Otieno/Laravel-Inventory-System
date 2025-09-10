@@ -9,7 +9,7 @@ use App\Http\Controllers\SignupController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\SocialiteController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -43,6 +43,14 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 
 // dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// socialite
+Route::controller(SocialiteController::class)->group(function(){
+    Route::get('forms/google','googleLogin')->name('forms.google');
+    Route::get('forms/google-callback', 'googleAuthentication')->name('forms.google-callback');
+});
+
 
 
 // product trash

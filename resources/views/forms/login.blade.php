@@ -17,14 +17,15 @@
                     <div class="text-danger"> {{  $message }} </div>
                 @enderror
             </div>
-            <div class="">
-                <input class="form-control" type="password" name="password" id="" placeholder="Password"><br>
+            <div class="pwd-wrapper">
+                <input class="form-control toggle-pwd" type="password" name="password" id="password" placeholder="Password"><br>
+                <span class="bt" onclick="togglePassword()"><i id="toggleIcon" class="fas fa-eye"></i></span>
                 @error('password')
                     <div class="text-danger"> {{  $message }} </div>
                 @enderror
             </div>
             <button class="btn btn-success w-100" type="submit">Login</button> <br>
-            <p class="mt-2 text-primary">SignUp insted: <a href="{{ route('signup') }}">SignUp</a></p>
+            <p class="mt-2 text-primary">SignUp insted: <a href="{{ route('signup') }}">SignUp</a> or <a href="{{ route('forms.google') }}">Login with Google</a></p>
         </form>
     </div>
 
